@@ -1,0 +1,15 @@
+### EPAM Python course
+
+This repository was created for homeworks solutions. This repository contains directories each of which has homework for corresponding week.
+
+Course source contains more extra information, it is here: [course](https://github.com/cdeler/epam_python_autumn_2020)
+
+Every homework was formatted by: `isort` and `black` formatters <br/>
+You can install formatters by basic python installer `pip`:
+`pip install isort`, `pip install black`. <br/>
+
+Also you can run it:
+ - just file `isort filename.py`, `black filename.py`
+ - recursively for current directory: `isort .`, `black .`
+
+Environment: python3.8
