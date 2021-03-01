@@ -11,8 +11,7 @@ from typing import Sequence
 
 def check_fibonacci(data: Sequence[int]) -> bool:
     if (
-        len(data) == 0
-        or len(data) == 1
+        len(data) == 1
         and data[0] != 0
         or len(data) >= 2
         and (data[0] != 0 or data[1] != 1)
