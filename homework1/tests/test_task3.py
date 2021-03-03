@@ -20,6 +20,7 @@ def test_find_maximum_and_minimum(radius: int,
 
     i = 1
     with open(file_name, "r+") as file:
+        file.truncate(0)
         values = []
         while i < number:
             val = randint(-1 * radius, radius)
