@@ -4,6 +4,8 @@ This repository was created for homeworks solutions. This repository contains di
 
 Course source contains more extra information, it is here: [course](https://github.com/cdeler/epam_python_autumn_2020)
 
+For every homework exists tests, so you can run them this way `pytest tests/`
+
 Every homework was formatted by: `isort` and `black` formatters <br/>
 You can install formatters by basic python installer `pip`:
 `pip install isort`, `pip install black`. <br/>
