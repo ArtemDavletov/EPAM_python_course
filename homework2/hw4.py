@@ -18,8 +18,16 @@ val_2 = cache_func(*some)
 assert val_1 is val_2
 
 """
-from collections import Callable
+from typing import Callable
 
 
 def cache(func: Callable) -> Callable:
-    ...
+    cacher = dict()
+
+    def wrap(a, b, *args, **kwargs):
+        if (a, b) not in cacher:
+            cacher[(a, b)] = func(a, b)
+
+        return cacher[(a, b)]
+
+    return wrap
