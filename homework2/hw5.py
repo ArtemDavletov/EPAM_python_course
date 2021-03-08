@@ -18,52 +18,25 @@ from typing import Iterable
 
 
 def custom_range(iterable: Iterable, *args):
+    iterable = list(iterable)
+    answer = []
+
     if args is None:
         return iterable
 
     if len(args) == 1:
-        answer = []
-
-        i = 0
-        while args[i] != args[0]:
-            answer.append(args[i])
-
-            i += 1
+        for i in range(iterable.index(args[0])):
+            answer.append(iterable[i])
 
         return answer
 
     if len(args) == 2:
-        answer = []
-        flag = False
-
-        i = 0
-        while args[i] != args[1]:
-            if args[i] == args[0]:
-                flag = True
-
-            if flag:
-                answer.append(args[i])
-
-            i += 1
-
-        return answer
+        step = 1
 
     if len(args) == 3:
-        answer = []
-        flag = False
+        step = args[2]
 
-        if args[2] < 0:
-            iterable = list(reversed(iterable))
-            args[2] *= -1
+    for i in range(iterable.index(args[0]), iterable.index(args[1]), step):
+        answer.append(iterable[i])
 
-        i = 0
-        while args[i] != args[1] and i < len(iterable):
-            if args[i] == args[0]:
-                flag = True
-
-            if flag:
-                answer.append(args[i])
-
-            i += args[2]
-
-        return answer
+    return answer
