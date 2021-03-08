@@ -22,17 +22,16 @@ def get_longest_diverse_words(file_path: str) -> List[str]:
 
 def get_rarest_char(file_path: str) -> str:
     with open(file_path) as file:
-        chars: dict = Counter(file)
-        return min(chars.items(), key=(lambda key: chars[key]))
+        chars: dict = Counter("".join(file))
+        return min(chars.items(), key=(lambda key: chars[key]))[0]
 
 
 def count_punctuation_chars(file_path: str) -> int:
     with open(file_path) as file:
-        lines: List[List[str]] = [line.strip().split() for line in file]
         punct: set = set(string.punctuation)
         counter: int = 0
 
-        for line in lines:
+        for line in file:
             for el in line:
                 if el in punct:
                     counter += 1
@@ -42,11 +41,10 @@ def count_punctuation_chars(file_path: str) -> int:
 
 def count_non_ascii_chars(file_path: str) -> int:
     with open(file_path) as file:
-        lines: List[List[str]] = [line.strip().split() for line in file]
         ascii_letters: set = set(string.ascii_letters)
         counter: int = 0
 
-        for line in lines:
+        for line in file:
             for el in line:
                 if el not in ascii_letters:
                     counter += 1
@@ -56,11 +54,10 @@ def count_non_ascii_chars(file_path: str) -> int:
 
 def get_most_common_non_ascii_char(file_path: str) -> str:
     with open(file_path) as file:
-        lines: List[List[str]] = [line.strip().split() for line in file]
         ascii_letters: set = set(string.ascii_letters)
         non_ascii_characters: dict = dict()
 
-        for line in lines:
+        for line in file:
             for el in line:
                 if el not in ascii_letters:
                     if el in non_ascii_characters:
@@ -68,4 +65,4 @@ def get_most_common_non_ascii_char(file_path: str) -> str:
                     else:
                         non_ascii_characters[el] = 1
 
-    return max(non_ascii_characters.items(), key=(lambda key: non_ascii_characters[key]))
+    return max(non_ascii_characters.items(), key=(lambda key: non_ascii_characters[key[0]]))[0]
