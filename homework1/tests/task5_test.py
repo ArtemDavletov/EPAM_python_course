@@ -15,9 +15,7 @@ from homework1.task05 import find_maximal_subarray_sum
         ([1000, -10, -10, -10], 4, 1000),
     ],
 )
-def test_find_maximal_subarray_sum(
-    nums: List[int], k: int, expected_result: Tuple[int, int]
-):
+def test_find_maximal_subarray_sum(nums: List[int], k: int, expected_result: Tuple[int, int]):
     assert (
         find_maximal_subarray_sum(nums=nums, k=k) == expected_result
     ), f"Incorrect answer for numbers: {nums}, when k={k}"

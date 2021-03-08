@@ -45,6 +45,4 @@ from homework1.task02 import check_fibonacci
     ],
 )
 def test_check_fibonacci(data: Sequence[int], expected_result: bool):
-    assert (
-        check_fibonacci(data=data) == expected_result
-    ), f"Incorrect answer for input sequence: {data}"
+    assert check_fibonacci(data=data) == expected_result, f"Incorrect answer for input sequence: {data}"
