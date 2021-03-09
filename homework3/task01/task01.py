@@ -24,9 +24,3 @@ def cache(times: int):
 @cache(times=2)
 def f():
     return input("? ")
-
-
-print(f())
-print(f())
-print(f())
-print(f())
