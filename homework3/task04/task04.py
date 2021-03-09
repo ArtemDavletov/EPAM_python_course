@@ -26,5 +26,5 @@ def is_armstrong(number: int) -> bool:
     return reduce((lambda prev, curr: prev + curr ** length), list_number) == number
 
 
-assert is_armstrong(153) is True, "Is Armstrong number"
-assert is_armstrong(10) is False, "Is not Armstrong number"
+# assert is_armstrong(153) is True, "Is Armstrong number"
+# assert is_armstrong(10) is False, "Is not Armstrong number"
