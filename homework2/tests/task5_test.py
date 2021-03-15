@@ -15,5 +15,5 @@ from homework2.hw5 import custom_range
         (string.ascii_lowercase, [], ["z", "a"]),
     ],
 )
-def test_get_most_common_non_ascii_char(iterable: Iterable, expected_result, args: List):
+def test_custom_range(iterable: Iterable, expected_result, args: List):
     assert custom_range(iterable, *args) == expected_result, "Incorrect answer for input data: iterable"

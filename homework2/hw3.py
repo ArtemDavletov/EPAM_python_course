@@ -19,9 +19,4 @@ from typing import Any, List
 
 
 def combinations(*args: List[Any]) -> List[List]:
-    answer = []
-
-    for i in itertools.product(*args):
-        answer.append(list(i))
-
-    return answer
+    return [list(i) for i in itertools.product(*args)]

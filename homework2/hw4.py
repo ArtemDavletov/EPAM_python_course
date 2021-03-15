@@ -24,10 +24,11 @@ from typing import Callable
 def cache(func: Callable) -> Callable:
     cacher = dict()
 
-    def wrap(a, b, *args, **kwargs):
-        if (a, b) not in cacher:
-            cacher[(a, b)] = func(a, b)
+    def wrap(*args, **kwargs):
+        kwags_values = tuple(kwargs.values())
+        if (args, *kwags_values) not in cacher:
+            cacher[(args, *kwags_values)] = func(*args, **kwargs)
 
-        return cacher[(a, b)]
+        return cacher[(args, *kwags_values)]
 
     return wrap
