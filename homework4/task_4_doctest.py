@@ -35,6 +35,17 @@ from typing import List
 
 
 def fizzbuzz(n: int) -> List[str]:
+    """
+    Returns N FizzBuzz numbers
+    :param n: FizzBuzz numbers until n
+    :return: FizzBuzz numbers
+
+    >>> fizzbuzz(0)
+    []
+
+    >>> fizzbuzz(5)
+    ['1', '2', 'fizz', '4', 'buzz']
+    """
     answer = list()
     for i in range(1, n + 1):
         if i % 15 == 0:

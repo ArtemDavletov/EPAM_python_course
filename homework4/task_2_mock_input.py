@@ -6,7 +6,7 @@ Write a test that check that your function works.
 Test should use Mock instead of real network interactions.
 
 You can use urlopen* or any other network libraries.
-In case of any network error raise ValueError("Unreachable {url}).
+In case of any network error raise ValueError("Unreachable {url}").
 
 Definition of done:
  - function is created
@@ -31,4 +31,7 @@ import requests
 
 
 def count_dots_on_i(url: str) -> int:
-    return Counter(requests.get(url).text)["i"]
+    try:
+        return Counter(requests.get(url).text)["i"]
+    except Exception:
+        raise ValueError(f"Unreachable {url}")

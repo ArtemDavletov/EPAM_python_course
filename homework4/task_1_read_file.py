@@ -27,8 +27,8 @@ You will learn:
 
 
 def read_magic_number(path: str) -> bool:
-    with open(path, "r", encoding="UNF-8") as file:
+    with open(path, "r", encoding="UTF-8") as file:
         try:
-            return 1 <= int(file.readline()) < 3
+            return 1 <= float(file.readline()) < 3
         except Exception:
             raise ValueError
