@@ -5,11 +5,18 @@ import pytest
 from homework1.task03 import find_maximum_and_minimum
 
 
+def clear_file(path: str):
+    with open(path, "r+") as file:
+        file.truncate(0)
+
+
 @pytest.mark.parametrize(
     ["radius", "number"],
-    [(1000, 1000), (10000, 1000)],
+    [(1000, 100), (10000, 1000)],
 )
-def test_find_maximum_and_minimum(radius: int, number: int, file_name: str = "tests/test_data/task3_test.txt"):
+def test_find_maximum_and_minimum(
+    radius: int, number: int, file_name: str = "homework1/tests/test_data/task3_test.txt"
+):
     min_val = 0
     max_val = 0
 
@@ -38,3 +45,4 @@ def test_find_maximum_and_minimum(radius: int, number: int, file_name: str = "te
         min_val,
         max_val,
     ), f"Incorrect answer for file: {file_name}"
+    clear_file(file_name)
