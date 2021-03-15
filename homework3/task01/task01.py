@@ -7,13 +7,13 @@ def cache(times: int):
 
     def decorator(func: Callable) -> Callable:
         @wraps(func)
-        def wrapper():
+        def wrapper(*args, **kwargs):
             if func.__name__ not in cacher:
-                cacher[func.__name__] = [func(), times]
+                cacher[func.__name__] = [func(*args, **kwargs), times]
             else:
                 if cacher[func.__name__][1] == 0:
                     del cacher[func.__name__]
-                    return func()
+                    return func(*args, **kwargs)
                 cacher[func.__name__][1] -= 1
 
             return cacher[func.__name__][0]
