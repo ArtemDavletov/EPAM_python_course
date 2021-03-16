@@ -1,27 +1,22 @@
 import pytest
 
-from homework2.hw1 import (
-    count_non_ascii_chars,
-    count_punctuation_chars,
-    get_longest_diverse_words,
-    get_most_common_non_ascii_char,
-    get_rarest_char,
-)
+from homework2.hw1 import (count_non_ascii_chars, count_punctuation_chars, get_longest_diverse_words,
+                           get_most_common_non_ascii_char, get_rarest_char)
 
 
 @pytest.mark.trylast
 def test_get_longest_diverse_words(file_path: str = "tests/data.txt"):
     assert get_longest_diverse_words(file_path) == [
-        "schw\\u00e4chen,ihrebl\\u00f6\\u00dfen,ihreentz\\u00fcndbarkeit.erverf\\u00fcgt",
-        "raubsichsichernwill.l\\u00e4ngst\\u00fcbers\\u00e4ttigt,fri\\u00dfterimmerneu-",
-        "diemanf\\u00fcrr\\u00fcckst\\u00e4ndigh\\u00e4lt.dasgeh\\u00f6rtindaskapitelder",
-        "\\u00bbl'homme,dansl'\\u00e9tatactueldelasoci\\u00e9t\\u00e9,mepara\\u00eetplus",
-        "da\\u00dferdiema\\u00dfederf\\u00fcreinek\\u00fcnftigeepocheg\\u00fcltigenfrei-",
-        "ferner,da\\u00dff\\u00fcrstenfehlenundda\\u00dfdiem\\u00e4chtigenalle\\u00fcber",
-        "zugew\\u00f6hnen,da\\u00dfwiderstand\\u00fcberhauptm\\u00f6glichist\\u2014ist",
-        "diefallensind.zun\\u00e4chstw\\u00e4rennocheinigemi\\u00dfverst\\u00e4ndnis-",
-        "nenderkolo\\u00dfgef\\u00e4hrdetist.manmu\\u00dfn\\u00e4mlichwissen,da\\u00df",
-        "ihmanheimf\\u00e4llt,vergr\\u00f6\\u00dfertdashinterland.ermu\\u00dfzugleich",
+        "unmi\\u00dfverst\\u00e4ndliche",
+        "r\\u00e9sistance-Bewegungen,",
+        "Wiederbelebungs\\u00fcbungen",
+        "unver\\u00e4u\\u00dferlichen,",
+        "\\u00bbWaldg\\u00e4nger\\u00ab",
+        "Werkst\\u00e4ttenlandschaft",
+        "Werkst\\u00e4ttenlandschaft",
+        "Br\\u00fcckenschl\\u00e4gen;",
+        "Souver\\u00e4nit\\u00e4tsan-",
+        "Meinungs\\u00e4u\\u00dferung",
     ], f"[get_longest_diverse_words] Incorrect answer for file: {file_path}"
 
 
@@ -40,12 +35,12 @@ def test_count_punctuation_chars(file_path: str = "tests/data.txt"):
 @pytest.mark.trylast
 def test_count_non_ascii_chars(file_path: str = "tests/data.txt"):
     assert (
-        count_non_ascii_chars(file_path) == 0
+        count_non_ascii_chars(file_path) == 168762
     ), f"[count_non_ascii_chars] Correct answer for file {file_path} is 54661"
 
 
 @pytest.mark.trylast
 def test_get_most_common_non_ascii_char(file_path: str = "tests/data.txt"):
     assert (
-        get_most_common_non_ascii_char(file_path) == " "
+        get_most_common_non_ascii_char(file_path) == "e"
     ), f"[get_most_common_non_ascii_char] Correct answer for file {file_path} is ' '"
