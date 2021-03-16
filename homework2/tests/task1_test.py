@@ -3,9 +3,11 @@ import pytest
 from homework2.hw1 import (count_non_ascii_chars, count_punctuation_chars, get_longest_diverse_words,
                            get_most_common_non_ascii_char, get_rarest_char)
 
+TEST_DATA_PATH = "homework2/tests/data.txt"
+
 
 @pytest.mark.trylast
-def test_get_longest_diverse_words(file_path: str = "tests/data.txt"):
+def test_get_longest_diverse_words(file_path: str = TEST_DATA_PATH):
     assert get_longest_diverse_words(file_path) == [
         "unmi\\u00dfverst\\u00e4ndliche",
         "r\\u00e9sistance-Bewegungen,",
@@ -21,26 +23,26 @@ def test_get_longest_diverse_words(file_path: str = "tests/data.txt"):
 
 
 @pytest.mark.trylast
-def test_get_rarest_char(file_path: str = "tests/data.txt"):
+def test_get_rarest_char(file_path: str = TEST_DATA_PATH):
     assert get_rarest_char(file_path) == "E", f"[get_rarest_char] Correct answer for file {file_path} is 'E'"
 
 
 @pytest.mark.trylast
-def test_count_punctuation_chars(file_path: str = "tests/data.txt"):
+def test_count_punctuation_chars(file_path: str = TEST_DATA_PATH):
     assert (
         count_punctuation_chars(file_path) == 8277
     ), f"[count_punctuation_chars] Correct answer for file {file_path} is 8277"
 
 
 @pytest.mark.trylast
-def test_count_non_ascii_chars(file_path: str = "tests/data.txt"):
+def test_count_non_ascii_chars(file_path: str = TEST_DATA_PATH):
     assert (
         count_non_ascii_chars(file_path) == 168762
     ), f"[count_non_ascii_chars] Correct answer for file {file_path} is 54661"
 
 
 @pytest.mark.trylast
-def test_get_most_common_non_ascii_char(file_path: str = "tests/data.txt"):
+def test_get_most_common_non_ascii_char(file_path: str = TEST_DATA_PATH):
     assert (
         get_most_common_non_ascii_char(file_path) == "e"
     ), f"[get_most_common_non_ascii_char] Correct answer for file {file_path} is ' '"
