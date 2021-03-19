@@ -19,24 +19,15 @@ from typing import Iterable
 
 def custom_range(iterable: Iterable, *args):
     iterable = list(iterable)
-    answer = []
 
     if args is None:
         return iterable
 
     if len(args) == 1:
-        for i in range(iterable.index(args[0])):
-            answer.append(iterable[i])
-
-        return answer
+        return iterable[:iterable.index(args[0])]
 
     if len(args) == 2:
-        step = 1
+        return iterable[iterable.index(args[0]): iterable.index(args[1])]
 
     if len(args) == 3:
-        step = args[2]
-
-    for i in range(iterable.index(args[0]), iterable.index(args[1]), step):
-        answer.append(iterable[i])
-
-    return answer
+        return iterable[iterable.index(args[0]): iterable.index(args[1]): args[2]]

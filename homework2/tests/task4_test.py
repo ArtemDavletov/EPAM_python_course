@@ -1,4 +1,4 @@
-from typing import Any, Tuple
+from random import randint
 from unittest.mock import MagicMock
 
 import pytest
@@ -6,15 +6,11 @@ import pytest
 from homework2.hw4 import cache
 
 
-@pytest.mark.parametrize("some", [(100, 200), (1, 1), (0, 1)])
-def test_cache_func(some: Tuple[Any, Any]):
+@pytest.mark.trylast
+def test_cache_func():
+    some = (randint(0, 1000), randint(0, 1000))
     func = MagicMock()
     cache_func = cache(func)
+    cache_func(*some)
     cache_func(*some)
     func.assert_called_once()
-
-    func = MagicMock()
-    cache_func = cache(func)
-    func = MagicMock()
-    cache_func(*some)
-    func.assert_not_called()

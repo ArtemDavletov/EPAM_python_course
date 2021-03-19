@@ -22,8 +22,7 @@ from typing import List, Tuple
 
 
 def major_and_minor_elem(inp: List) -> Tuple[int, int]:
-    elements: dict = Counter(inp)
-    most_common_el = max(elements.items(), key=lambda key: elements[key[0]])[0]
-    least_common_el = min(elements.items(), key=lambda key: elements[key[0]])[0]
+    elements: Counter = Counter(inp)
+    sorted_elements = elements.most_common()
 
-    return most_common_el, least_common_el
+    return sorted_elements[0][0], sorted_elements[-1][0]
