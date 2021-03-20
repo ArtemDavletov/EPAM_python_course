@@ -13,18 +13,18 @@ from typing import List
 
 
 def get_longest_diverse_words(file_path: Path) -> List[str]:
-    def collect_words(lines) -> set:
-        return {el for line in lines for el in line.strip().split()}
+    def collect_words(text) -> set:
+        return {word for word in text.strip().split()}
 
     with open(file_path, "r", encoding="unicode-escape") as file:
-        words = collect_words(file)
+        words = collect_words(file.read())
 
-    return sorted(words, key=lambda x: (len(x), len(set(x))), reverse=True)[:10]
+    return sorted(words, key=lambda x: (len(set(x)), len(x)), reverse=True)[:10]
 
 
 def get_rarest_char(file_path: Path) -> str:
     with open(file_path, encoding="unicode-escape") as file:
-        chars: Counter = Counter(char for line in file for char in line)
+        chars: Counter = Counter(char for char in file.read())
         return min(chars.items(), key=(lambda key: chars[key]))[0]
 
 
@@ -32,17 +32,16 @@ def count_punctuation_chars(file_path: Path) -> int:
     with open(file_path, encoding="unicode-escape") as file:
         # punctuation characters aren't in the order https://u.to/P4QpGw
         punct: set = set(string.punctuation)
-        return sum(el in punct for line in file for el in line)
+        return sum(el in punct for el in file.read())
 
 
 def count_non_ascii_chars(file_path: Path) -> int:
     with open(file_path, encoding="unicode-escape") as file:
         # Also I found method .isascii() for strings, so we also can write with it
-        # return sum(not el.isascii() for line in file for el in line)
-        return sum(ord(el) >= 128 for line in file for el in line)
+        # return sum(not el.isascii() for el in file.read())
+        return sum(ord(el) >= 128 for el in file.read())
 
 
 def get_most_common_non_ascii_char(file_path: Path) -> str:
     with open(file_path, encoding="unicode-escape") as file:
-        # I like this solution 😊
-        return Counter(el for line in file for el in line if not el.isascii()).most_common(n=1)[0][0]
+        return Counter(el for el in file.read() if not el.isascii()).most_common(n=1)[0][0]
