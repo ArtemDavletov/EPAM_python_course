@@ -9,11 +9,11 @@ from homework4.task_1_read_file import read_magic_number
 
 
 def fill_in_file(number: float) -> None:
-    file = open("test.txt", "w")
-    file.write(str(number))
-    file.close()
+    with open("test.txt", "w") as file:
+        file.write(str(number))
 
 
+@pytest.mark.trylast
 def test_positive_read_magic_number_positive_result():
     number = uniform(1, 3)
     try:
@@ -23,6 +23,7 @@ def test_positive_read_magic_number_positive_result():
         os.remove("test.txt")
 
 
+@pytest.mark.trylast
 def test_positive_read_magic_number_negative_result():
     number = random.choice((uniform(3.1, 10000), uniform(-10000, 1)))
     try:
@@ -32,11 +33,9 @@ def test_positive_read_magic_number_negative_result():
         os.remove("test.txt")
 
 
-@pytest.mark.parametrize(
-    "length",
-    [randint(-10000, 10000)],
-)
-def test_negative_read_magic_number(length: int):
+@pytest.mark.trylast
+def test_negative_read_magic_number():
+    length = randint(-10000, 10000)
     file = open("test.txt", "w")
     file.write("".join(choice(ascii_letters) for _ in range(length)))
     file.close()
