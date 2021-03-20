@@ -2,14 +2,12 @@
 Write a function that will receive a string and write it to stderr
 if line starts with "error" and to the stdout otherwise.
 
-
-# >>> my_precious_logger("error: file not found")
 # stderr
+# >>> my_precious_logger("error: file not found")
 'error: file not found'
 
-
-# >>> my_precious_logger("OK")
 # stdout
+# >>> my_precious_logger("OK")
 'OK'
 
 Definition of done:
@@ -28,7 +26,6 @@ import sys
 
 def my_precious_logger(text: str):
     if text.startswith("error"):
-        print(text, file=sys.stderr)
+        sys.stderr.write(text)
     else:
-        # print(text)
         sys.stdout.write(text)

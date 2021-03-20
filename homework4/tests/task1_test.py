@@ -1,4 +1,5 @@
 import os
+import random
 from random import choice, randint, uniform
 from string import ascii_letters
 
@@ -7,17 +8,28 @@ import pytest
 from homework4.task_1_read_file import read_magic_number
 
 
-@pytest.mark.parametrize(
-    ["number", "expected_result"],
-    [(uniform(1, 3), True), (uniform(3.1, 10000), False), (uniform(-10000, 1), False)],
-)
-def test_positive_read_magic_number(number: float, expected_result: bool):
+def fill_in_file(number: float) -> None:
     file = open("test.txt", "w")
     file.write(str(number))
     file.close()
 
-    assert read_magic_number("test.txt") == expected_result
-    os.remove("test.txt")
+
+def test_positive_read_magic_number_positive_result():
+    number = uniform(1, 3)
+    try:
+        fill_in_file(number)
+        assert read_magic_number("test.txt") is True
+    finally:
+        os.remove("test.txt")
+
+
+def test_positive_read_magic_number_negative_result():
+    number = random.choice((uniform(3.1, 10000), uniform(-10000, 1)))
+    try:
+        fill_in_file(number)
+        assert read_magic_number("test.txt") is False
+    finally:
+        os.remove("test.txt")
 
 
 @pytest.mark.parametrize(

@@ -1,35 +1,22 @@
-from collections import Counter
-from unittest.mock import MagicMock
-
 import pytest
+import requests_mock
 
-
-class ResponseMock:
-    text: str
-
-    def __init__(self, text: str):
-        self.text = text
-
-
-class RequestsMock:
-    ...
-
-
-def count_dots_on_i_mock(url: str) -> int:
-    try:
-        requests = RequestsMock()
-        requests.get = MagicMock(return_value=ResponseMock(text=url))
-        return Counter(requests.get(url).text)["i"]
-    except Exception:
-        raise ValueError(f"Unreachable {url}")
+from homework4.task_2_mock_input import count_dots_on_i
 
 
 @pytest.mark.parametrize(["text", "expected_value"], [("<i></i>", 2), ("", 0), ("i", 1), ("iiiii", 5)])
 def test_positive_count_dots_on_i(text, expected_value: int):
-    assert count_dots_on_i_mock(text) == expected_value
+    url = "http://mocked-address.com"
+
+    with requests_mock.Mocker() as m:
+        m.get(url, text=text)
+
+        assert count_dots_on_i(url) == expected_value
 
 
-@pytest.mark.parametrize("text", [123, ResponseMock])
+@pytest.mark.parametrize("text", [123, None])
 def test_negative_count_dots_on_i(text):
+    url = "http://mocked-address.com"
+
     with pytest.raises(ValueError):
-        count_dots_on_i_mock(text)
+        count_dots_on_i(url)

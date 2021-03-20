@@ -30,5 +30,5 @@ def read_magic_number(path: str) -> bool:
     with open(path, "r", encoding="UTF-8") as file:
         try:
             return 1 <= float(file.readline()) < 3
-        except Exception:
-            raise ValueError
+        except Exception as e:
+            raise ValueError(f"The file {path} contains incorrect data") from e

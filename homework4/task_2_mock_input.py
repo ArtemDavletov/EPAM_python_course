@@ -30,8 +30,12 @@ from collections import Counter
 import requests
 
 
+def get_text_by_url(url) -> str:
+    return requests.get(url).text
+
+
 def count_dots_on_i(url: str) -> int:
     try:
-        return Counter(requests.get(url).text)["i"]
-    except Exception:
-        raise ValueError(f"Unreachable {url}")
+        return Counter(get_text_by_url(url))["i"]
+    except Exception as e:
+        raise ValueError(f"Unreachable {url}") from e
