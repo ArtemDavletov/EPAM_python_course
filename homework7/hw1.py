@@ -27,10 +27,10 @@ example_tree = {
 }
 
 
-def walk_throw_iterable(iter: Iterable, element: Any):
+def walk_throw_iterable(iterable: Iterable, element: Any):
     occurrences = 0
 
-    for el in iter:
+    for el in iterable:
         if el == element:
             occurrences += 1
         elif isinstance(el, dict):
