@@ -30,16 +30,16 @@ def is_finished(board: List[List]):
 
 
 def check_diagonals(board: List[List]):
-    if board[0][0] == board[1][1] == board[2][2] and board[0][0] in {"x", "o"}:
+    if board[0][0] == board[1][1] == board[2][2] != "-":
         return board[0][0]
-    elif board[2][0] == board[1][1] == board[0][2] and board[2][0] in {"x", "o"}:
+    elif board[2][0] == board[1][1] == board[0][2] != "-":
         return board[2][0]
     return False
 
 
 def check_rows(board: List[List]):
     for i in range(len(board)):
-        if len(set(board[i])) == 1 and board[i][0] in {"x", "o"}:
+        if len(set(board[i])) == 1 and board[i][0] != "-":
             return board[i][0]
 
     return False
@@ -47,7 +47,7 @@ def check_rows(board: List[List]):
 
 def check_columns(board: List[List]):
     for i in range(len(board)):
-        if board[0][i] == board[1][i] == board[2][i] and board[0][i] in {"x", "o"}:
+        if board[0][i] == board[1][i] == board[2][i] != "-":
             return board[0][i]
 
     return False
@@ -57,7 +57,7 @@ def tic_tac_toe_checker(board: List[List]) -> str:
     expr = check_diagonals(board) or check_rows(board) or check_columns(board)
 
     if expr:
-        return expr + " wins!"
+        return f"{expr} wins!"
 
     if is_finished(board):
         return "draw!"
