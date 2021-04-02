@@ -1,4 +1,7 @@
 import sqlite3
+from pathlib import Path
+
+TEST_DB_PATH = Path(__file__).parent / "example.sqlite"
 
 
 class TableData:
@@ -21,8 +24,12 @@ class TableData:
             raise AttributeError from e
 
     def __contains__(self, item):
-        self.cursor.execute(f"SELECT * FROM {self.table_name}")
-        return item in self.cursor.fetchall()
+        return (
+            item
+            in self.cursor.execute(
+                f'SELECT * FROM {self.table_name} WHERE {self.table_name}.name == "{item}"'
+            ).fetchone()
+        )
 
     def __iter__(self):
         self.cursor.execute(f"SELECT * FROM {self.table_name}")
@@ -30,10 +37,11 @@ class TableData:
             yield dict(zip(self.tablenames, i))
 
 
-presidents = TableData(database_name="example.sqlite", table_name="presidents")
+presidents = TableData(database_name=TEST_DB_PATH, table_name="presidents")
 
 print(len(presidents))
 print(presidents["Yeltsin"])
+print("Yeltsin" in presidents)
 
 for president in presidents:
     print(president["name"])
