@@ -22,7 +22,7 @@ def universal_file_counter(dir_path: Path, file_extension: str, tokenizer: Optio
 
     for file in os.listdir(dir_path):
         if file.endswith(file_extension):
-            with open(file) as file_read:
+            with open(dir_path / file) as file_read:
                 if tokenizer is None:
                     counter += len(file_read.readlines())
                 else:

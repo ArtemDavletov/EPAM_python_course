@@ -26,27 +26,27 @@ def prepare_file(filename: str = "test.txt") -> Tuple[Path, int]:
     finally:
         file.close()
 
-    return file_path.parent, num
+    return file_path, num
 
 
 @pytest.mark.trylast
 def test_universal_file_counter():
-    file_dir, num = prepare_file()
+    file_path, num = prepare_file()
     try:
-        result = universal_file_counter(file_dir, "txt")
+        result = universal_file_counter(file_path.parent, "txt")
         assert result == num
     finally:
-        os.remove(file_dir)
+        os.remove(file_path)
 
 
 @pytest.mark.trylast
 def test_universal_file_counter_with_tokenizer():
-    file_dir, num = prepare_file()
+    file_path, num = prepare_file()
     try:
-        result = universal_file_counter(file_dir, "txt", str.split)
+        result = universal_file_counter(file_path.parent, "txt", str.split)
         assert result == num * 2
     finally:
-        os.remove(file_dir)
+        os.remove(file_path)
 
 
 def test_universal_file_counter_with_non_existing_file():
