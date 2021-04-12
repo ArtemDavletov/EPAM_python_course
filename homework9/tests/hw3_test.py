@@ -49,6 +49,16 @@ def test_universal_file_counter_with_tokenizer():
         os.remove(file_path)
 
 
+@pytest.mark.trylast
+def test_universal_file_counter_with_tokenizer_without_len():
+    file_path, num = prepare_file()
+    try:
+        result = universal_file_counter(file_path.parent, "txt", lambda x: x)
+        assert result == num
+    finally:
+        os.remove(file_path)
+
+
 def test_universal_file_counter_with_non_existing_file():
     assert universal_file_counter(DIR_PATH, "txt") == 0
 

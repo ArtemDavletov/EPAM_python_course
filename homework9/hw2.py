@@ -15,8 +15,6 @@ def supressor(exception):
         yield
     except exception:
         ...  # Catch behaviour
-    finally:
-        ...  # Exit behaviour
 
 
 class SupressorClass:

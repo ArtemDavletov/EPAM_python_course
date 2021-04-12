@@ -20,7 +20,11 @@ from typing import Iterator, List, Union
 
 
 def translate_file_to_list(file):
-    return list(map(int, file.read().strip().split("\n")))
+    output = []
+    for line in file:
+        output.append(int(line))
+
+    return output
 
 
 def merge_sorted_files(file_list: List[Union[Path, str]]) -> Iterator:

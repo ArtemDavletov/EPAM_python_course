@@ -14,7 +14,16 @@ import os
 from pathlib import Path
 from typing import Callable, Optional
 
-# DIR_PATH = Path(__file__).parent
+DIR_PATH = Path(__file__).parent
+
+
+def count_len(tokens):
+    try:
+        if isinstance(tokens, str):
+            return 1
+        return len(tokens)
+    except TypeError:
+        return 1
 
 
 def universal_file_counter(dir_path: Path, file_extension: str, tokenizer: Optional[Callable] = None) -> int:
@@ -26,9 +35,9 @@ def universal_file_counter(dir_path: Path, file_extension: str, tokenizer: Optio
                 if tokenizer is None:
                     counter += len(file_read.readlines())
                 else:
-                    counter += sum(len(tokenizer(line)) for line in file_read.readlines())
+                    counter += sum(count_len(tokenizer(line)) for line in file_read.readlines())
 
     return counter
 
 
-# print(universal_file_counter(DIR_PATH, "txt"))
+print(universal_file_counter(DIR_PATH, "txt") == universal_file_counter(DIR_PATH, "txt", lambda x: x))
