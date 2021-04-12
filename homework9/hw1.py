@@ -16,15 +16,11 @@ file2.txt:
 """
 from contextlib import ExitStack
 from pathlib import Path
-from typing import Iterator, List, Union
+from typing import Iterable, Iterator, List, Union
 
 
-def translate_file_to_list(file):
-    output = []
-    for line in file:
-        output.append(int(line))
-
-    return output
+def lines_from_file_generator(file) -> Iterable:
+    yield from (int(line) for line in file)
 
 
 def merge_sorted_files(file_list: List[Union[Path, str]]) -> Iterator:
@@ -33,7 +29,9 @@ def merge_sorted_files(file_list: List[Union[Path, str]]) -> Iterator:
         # Can expand list comprehension into "for loop" with exception FileNotFoundError and ignoring non-existing files
         # yield from merge_sorted_lists(*map(lambda x: list(map(int, x.read().split("\n"))), files))
 
-        yield from merge_sorted_lists(*map(translate_file_to_list, files))  # More readable and testable
+        yield from merge_sorted_lists(
+            *map(lambda x: list(x), map(lines_from_file_generator, files))
+        )  # More readable and testable
 
 
 def merge_sorted_lists(*lists) -> List[int]:
@@ -54,7 +52,7 @@ def merge_sorted_lists(*lists) -> List[int]:
 
 
 # print(list(merge_sorted_files(["file1.txt", "file2.txt", "file3.txt"])))
-
+#
 # from collections import deque
 #
 # def merge_sorted_two_lists(first_list: List[int], second_list: List[int]):

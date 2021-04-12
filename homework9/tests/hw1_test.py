@@ -5,7 +5,7 @@ from typing import List, Tuple
 
 import pytest
 
-from homework9.hw1 import merge_sorted_lists, translate_file_to_list
+from homework9.hw1 import lines_from_file_generator, merge_sorted_lists
 
 
 def prepare_file(filename: str = "test.txt") -> Tuple[Path, List[int]]:
@@ -29,7 +29,7 @@ def test_translate_file_to_list():
     file_path, list_data = prepare_file()
     try:
         with open(file_path) as file:
-            assert translate_file_to_list(file) == list_data
+            assert list(lines_from_file_generator(file)) == list_data
     finally:
         os.remove(file_path)
 
