@@ -29,25 +29,28 @@ def merge_sorted_files(file_list: List[Union[Path, str]]) -> Iterator:
         # Can expand list comprehension into "for loop" with exception FileNotFoundError and ignoring non-existing files
         # yield from merge_sorted_lists(*map(lambda x: list(map(int, x.read().split("\n"))), files))
 
-        yield from merge_sorted_lists(
-            *map(lambda x: list(x), map(lines_from_file_generator, files))
-        )  # More readable and testable
+        yield from merge_sorted_lists_gen(list(map(lines_from_file_generator, files)))  # More readable and testable
 
 
-def merge_sorted_lists(*lists) -> List[int]:
-    reversed_lists: List[List[int]] = list(map(lambda x: list(reversed(x)), lists))
+def merge_sorted_lists_gen(generators) -> List[int]:
     result = []
+    iteration = []
+    for gen in generators:
+        try:
+            iteration.append(next(gen))
+        except StopIteration:
+            generators.remove(gen)
 
-    while [] in reversed_lists:
-        reversed_lists.remove([])
+    while generators:
+        min_val = min(iteration)
+        min_index = iteration.index(min_val)
 
-    while reversed_lists:
-        list_with_min_val = min(reversed_lists, key=lambda x: x[-1])
-        result.append(list_with_min_val.pop())
-
-        if not list_with_min_val:
-            reversed_lists.remove(list_with_min_val)
-
+        result.append(min_val)
+        try:
+            iteration[min_index] = next(generators[min_index])
+        except StopIteration:
+            iteration.remove(min_val)
+            generators.remove(generators[min_index])
     return result
 
 
@@ -84,6 +87,24 @@ def merge_sorted_lists(*lists) -> List[int]:
 #     reversed_second_list.reverse()
 #
 #     return result + reversed_first_list + reversed_second_list
+#
+#
+# def merge_sorted_lists(*lists) -> List[int]:
+#     reversed_lists: List[List[int]] = list(map(lambda x: list(reversed(x)), lists))
+#     result = []
+#
+#     while [] in reversed_lists:
+#         reversed_lists.remove([])
+#
+#     while reversed_lists:
+#         list_with_min_val = min(reversed_lists, key=lambda x: x[-1])
+#         result.append(list_with_min_val.pop())
+#
+#         if not list_with_min_val:
+#             reversed_lists.remove(list_with_min_val)
+#
+#     return result
+#
 #
 #
 # f_list = []
