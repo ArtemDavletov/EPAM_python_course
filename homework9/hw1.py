@@ -16,7 +16,7 @@ file2.txt:
 """
 from contextlib import ExitStack
 from pathlib import Path
-from typing import Iterable, Iterator, List, Union
+from typing import Generator, Iterable, Iterator, List, Union
 
 
 def lines_from_file_generator(file) -> Iterable:
@@ -32,8 +32,7 @@ def merge_sorted_files(file_list: List[Union[Path, str]]) -> Iterator:
         yield from merge_sorted_lists_gen(list(map(lines_from_file_generator, files)))  # More readable and testable
 
 
-def merge_sorted_lists_gen(generators) -> List[int]:
-    result = []
+def merge_sorted_lists_gen(generators) -> Generator[int, None, None]:
     iteration = []
     for gen in generators:
         try:
@@ -45,13 +44,12 @@ def merge_sorted_lists_gen(generators) -> List[int]:
         min_val = min(iteration)
         min_index = iteration.index(min_val)
 
-        result.append(min_val)
+        yield min_val
         try:
             iteration[min_index] = next(generators[min_index])
         except StopIteration:
             iteration.remove(min_val)
             generators.remove(generators[min_index])
-    return result
 
 
 # print(list(merge_sorted_files(["file1.txt", "file2.txt", "file3.txt"])))

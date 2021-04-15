@@ -36,4 +36,4 @@ def test_merge_sorted_lists():
     def gen():
         yield 1
 
-    assert merge_sorted_lists_gen([gen(), gen(), gen()]) == [1, 1, 1]
+    assert list(merge_sorted_lists_gen([gen(), gen(), gen()])) == [1, 1, 1]
