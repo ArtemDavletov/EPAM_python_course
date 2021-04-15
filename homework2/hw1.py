@@ -25,7 +25,7 @@ def get_longest_diverse_words(file_path: Path) -> List[str]:
 def get_rarest_char(file_path: Path) -> str:
     with open(file_path, encoding="unicode-escape") as file:
         chars: Counter = Counter(char for char in file.read())
-        return min(chars.items(), key=(lambda key: chars[key]))[0]
+        return chars.most_common()[-1][0]
 
 
 def count_punctuation_chars(file_path: Path) -> int:

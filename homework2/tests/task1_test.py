@@ -26,7 +26,7 @@ def test_get_longest_diverse_words(file_path: Path = TEST_DATA_PATH):
 
 @pytest.mark.trylast
 def test_get_rarest_char(file_path: Path = TEST_DATA_PATH):
-    assert get_rarest_char(file_path) == "E", f"[get_rarest_char] Correct answer for file {file_path} is 'E'"
+    assert get_rarest_char(file_path) == ")", f"[get_rarest_char] Correct answer for file {file_path} is ')'"
 
 
 @pytest.mark.trylast
