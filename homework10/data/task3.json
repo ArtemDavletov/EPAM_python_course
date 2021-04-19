@@ -1,0 +1,82 @@
+[
+  {
+    "code": "NWSA",
+    "name": "News",
+    "price": 2041.95,
+    "P/E": 26.7,
+    "growth": 202.16,
+    "potential profit": 0.45
+  },
+  {
+    "code": "MRO",
+    "name": "Marathon Oil",
+    "price": 810.52,
+    "P/E": 10.52,
+    "growth": 203.53,
+    "potential profit": 0.35
+  },
+  {
+    "code": "MGM",
+    "name": "MGM Resorts International",
+    "price": 3047.67,
+    "P/E": 40.21,
+    "growth": 205.14,
+    "potential profit": 0.65
+  },
+  {
+    "code": "EXPE",
+    "name": "Expedia",
+    "price": 13432.8,
+    "P/E": 173.91,
+    "growth": 209.15,
+    "potential profit": 5.08
+  },
+  {
+    "code": "ALGN",
+    "name": "Align Technology",
+    "price": 45718.19,
+    "P/E": 606.33,
+    "growth": 223.63,
+    "potential profit": 16.33
+  },
+  {
+    "code": "GPS",
+    "name": "Gap",
+    "price": 2479.62,
+    "P/E": 32.73,
+    "growth": 342.19,
+    "potential profit": 0.63
+  },
+  {
+    "code": "ENPH",
+    "name": "Enphase Energy",
+    "price": 10761.03,
+    "P/E": 150.01,
+    "growth": 350.68,
+    "potential profit": 14.33
+  },
+  {
+    "code": "FCX",
+    "name": "Freeport-McMoRan",
+    "price": 2834.94,
+    "P/E": 38.19,
+    "growth": 361.21,
+    "potential profit": 2.27
+  },
+  {
+    "code": "LB",
+    "name": "L Brands",
+    "price": 5056.84,
+    "P/E": 66.93,
+    "growth": 367.02,
+    "potential profit": 1.02
+  },
+  {
+    "code": "TSLA",
+    "name": "Tesla",
+    "price": 54152.87,
+    "P/E": 739.78,
+    "growth": 401.64,
+    "potential profit": 33.55
+  }
+]
