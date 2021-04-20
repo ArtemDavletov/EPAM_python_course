@@ -4,7 +4,6 @@ import time
 from typing import AsyncIterator, List
 
 import aiohttp as aiohttp
-import requests
 from aiohttp import ClientSession
 from bs4 import BeautifulSoup
 
@@ -78,8 +77,8 @@ async def get_pages_gen() -> AsyncIterator:
         yield get_n_sandp_page(i)
 
 
-def request_to_page(page: str) -> str:
-    return requests.get(page).text
+# def request_to_page(page: str) -> str:
+#     return requests.get(page).text
 
 
 async def fetch(client: ClientSession, page: str):
