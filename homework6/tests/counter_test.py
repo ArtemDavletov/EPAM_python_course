@@ -27,6 +27,23 @@ def test_get_instances():
     assert mock.get_created_instances() == 3
 
 
+def test_get_instances_for_many_classes():
+    class Test:
+        pass
+
+    class Test2:
+        pass
+
+    decorated_class = instances_counter(Test)
+    decorated_class2 = instances_counter(Test2)
+
+    mock, _, _ = decorated_class(), decorated_class(), decorated_class()
+    mock2, _ = decorated_class2(), decorated_class2()
+
+    assert mock.get_created_instances() == 3
+    assert mock2.get_created_instances() == 2
+
+
 def test_instances_after_reset():
     class Test:
         pass
