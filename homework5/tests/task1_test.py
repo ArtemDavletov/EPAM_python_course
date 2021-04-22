@@ -3,21 +3,21 @@ from homework5.oop_1 import Homework, Student, Teacher
 
 def test_teacher_creation():
     teacher = Teacher("Daniil", "Shadrin")
-    assert getattr(teacher, "last_name") == "Daniil"
-    assert getattr(teacher, "first_name") == "Shadrin"
+    assert teacher.last_name == "Daniil"
+    assert teacher.first_name == "Shadrin"
 
 
 def test_homework_creation():
     homework = Homework("Do something", 0)
-    assert getattr(homework, "text") == "Do something"
-    assert getattr(homework, "deadline") == 0
-    assert getattr(homework, "created") is not None
+    assert homework.text == "Do something"
+    assert homework.deadline == 0
+    assert homework.created is not None
 
 
 def test_student_creation():
     student = Student("Daniil", "Shadrin")
-    assert getattr(student, "last_name") == "Daniil"
-    assert getattr(student, "first_name") == "Shadrin"
+    assert student.last_name == "Daniil"
+    assert student.first_name == "Shadrin"
 
 
 def test_create_homework_by_teacher():
