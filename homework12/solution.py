@@ -6,10 +6,8 @@ from typing import Dict, List, Optional
 from sqlalchemy import Column, Date, DateTime, ForeignKey, Integer, String, create_engine
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
-TEST_DATA_PATH = Path(__file__).parent / "min.db"
-
-engine = create_engine("sqlite:///main.db")
 Base = declarative_base()
+engine = create_engine("sqlite:///main.db")
 
 
 class Homework(Base):
@@ -66,6 +64,7 @@ class HomeworkResult(Base):
     created = Column(DateTime)
 
     def __init__(self, homework: Homework, solution: str, author: Student):
+        self.created = datetime.datetime.now()
         if not isinstance(homework, Homework):
             raise TypeError("You gave a not Homework object")
         super(HomeworkResult, self).__init__(homework=homework, solution=solution, author=author)

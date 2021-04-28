@@ -13,17 +13,15 @@ config = context.config
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 
+import os
 import sys
-from pathlib import Path
 
-ROOT_PATH = Path(__file__).parent.parent
+current_path = os.path.dirname(os.path.abspath(__file__))
+ROOT_PATH = os.path.join(current_path, '..')
 sys.path.append(ROOT_PATH)
 
-# add your model's MetaData object here
-# for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-from homework12.solution import Base, Homework, HomeworkResult, Student, Teacher, engine
+from solution import Base, engine
+from solution import Homework, HomeworkResult, Student, Teacher
 
 target_metadata = Base.metadata
 
