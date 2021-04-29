@@ -29,3 +29,14 @@ def test_custom_sum_original_func():
     decorated_custom_sum = print_result(custom_sum)
 
     assert decorated_custom_sum.__original_func() == custom_sum() == 10
+
+
+def test_custom_sum_stdout(capsys):
+    custom_sum = set_custom_sum_mock()
+    decorated_custom_sum = print_result(custom_sum)
+    result = str(decorated_custom_sum(1, 2, 3))
+
+    captured = capsys.readouterr()
+    stdout = str(captured.out).strip()
+
+    assert result == stdout
