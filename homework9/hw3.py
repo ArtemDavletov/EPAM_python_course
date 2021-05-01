@@ -38,6 +38,3 @@ def universal_file_counter(dir_path: Path, file_extension: str, tokenizer: Optio
                     counter += sum(count_len(tokenizer(line)) for line in file_read.readlines())
 
     return counter
-
-
-print(universal_file_counter(DIR_PATH, "txt") == universal_file_counter(DIR_PATH, "txt", lambda x: x))
