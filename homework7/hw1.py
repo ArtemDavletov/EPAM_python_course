@@ -43,32 +43,15 @@ def walk_throw_iterable(iterable: Iterable, element: Any):
 def find_occurrences(tree: dict, element: Any) -> int:
     occurrences = 0
 
-    for key in tree:
-        if tree[key] == element:
+    for _, val in tree.items():
+        if val == element:
             occurrences += 1
-        elif isinstance(tree[key], dict):
-            occurrences += find_occurrences(tree[key], element)
-        elif not isinstance(tree[key], str) and isinstance(tree[key], Iterable):
-            occurrences += walk_throw_iterable(tree[key], element)
+        elif isinstance(val, dict):
+            occurrences += find_occurrences(val, element)
+        elif not isinstance(val, str) and isinstance(val, Iterable):
+            occurrences += walk_throw_iterable(val, element)
 
     return occurrences
-
-
-# I know that I can write just, but in this realization find_occurrences get Iterable object instead of dict
-#
-# def find_occurrences(tree: Iterable, element: Any) -> int:
-#     occurrences = 0
-#
-#     for el in tree:
-#         if isinstance(tree, dict):
-#             el = tree[el]
-#
-#         if el == element:
-#             occurrences += 1
-#         elif not isinstance(el, str) and isinstance(el, Iterable):
-#             occurrences += find_occurrences(el, element)
-#
-#     return occurrences
 
 
 if __name__ == "__main__":

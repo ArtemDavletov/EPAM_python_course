@@ -63,14 +63,3 @@ def tic_tac_toe_checker(board: List[List]) -> str:
         return "draw!"
 
     return "unfinished!"
-
-
-# ex = [["-", "-", "o"],
-#       ["-", "x", "o"],
-#       ["x", "o", "x"]]
-#
-# ex2 = [["-", "-", "o"],
-#        ["-", "o", "o"],
-#        ["x", "x", "x"]]
-#
-# print(tic_tac_toe_checker(ex2))
