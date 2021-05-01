@@ -70,14 +70,12 @@ class DeadlineError(Exception):
 
 
 class Human:
-    last_name: str
-    first_name: str
-
-
-class Student(Human):
     def __init__(self, last_name, first_name):
         self.last_name = last_name
         self.first_name = first_name
+
+
+class Student(Human):
 
     def do_homework(self, homework: Homework, solution: str):
         if homework.is_active():
@@ -104,10 +102,6 @@ class HomeworkResult:
 
 class Teacher(Human):
     homework_done: Dict[Homework, List[HomeworkResult]] = defaultdict(list)
-
-    def __init__(self, last_name, first_name):
-        self.last_name = last_name
-        self.first_name = first_name
 
     @staticmethod
     def create_homework(text: str, days: int) -> Homework:
