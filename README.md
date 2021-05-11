@@ -15,3 +15,5 @@ Also you can run it:
  - recursively for current directory: `isort .`, `black .`
 
 Environment: python3.8
+
+Special thanks to @apaniukov for reviewing my Homeworks and answering for my silly questions
