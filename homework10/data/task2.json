@@ -1,0 +1,82 @@
+[
+  {
+    "code": "MRO",
+    "name": "Marathon Oil",
+    "price": 810.52,
+    "P/E": 10.52,
+    "growth": 203.53,
+    "potential profit": 0.35
+  },
+  {
+    "code": "F",
+    "name": "Ford Motor",
+    "price": 922.61,
+    "P/E": 12.26,
+    "growth": 174.31,
+    "potential profit": 0.23
+  },
+  {
+    "code": "GE",
+    "name": "General Electric",
+    "price": 1022.5,
+    "P/E": 13.38,
+    "growth": 90.75,
+    "potential profit": 0.25
+  },
+  {
+    "code": "HPE",
+    "name": "Hewlett Packard Enterprise",
+    "price": 1219.98,
+    "P/E": 15.93,
+    "growth": 64.49,
+    "potential profit": 0.16
+  },
+  {
+    "code": "HBAN",
+    "name": "Huntington Bancstocks",
+    "price": 1213.12,
+    "P/E": 16.18,
+    "growth": 98.03,
+    "potential profit": 0.43
+  },
+  {
+    "code": "KMI",
+    "name": "Kinder Morgan",
+    "price": 1258.11,
+    "P/E": 16.52,
+    "growth": 17.68,
+    "potential profit": 0.23
+  },
+  {
+    "code": "COG",
+    "name": "Cabot Oil & Gas",
+    "price": 1258.87,
+    "P/E": 16.55,
+    "growth": 0.54,
+    "potential profit": 0.37
+  },
+  {
+    "code": "HST",
+    "name": "Host Hotels & Resorts",
+    "price": 1322.92,
+    "P/E": 17.48,
+    "growth": -25.49,
+    "potential profit": 0.33
+  },
+  {
+    "code": "PBCT",
+    "name": "Peoples United Financial",
+    "price": 1368.67,
+    "P/E": 17.86,
+    "growth": 68.33,
+    "potential profit": 0.37
+  },
+  {
+    "code": "UA",
+    "name": "Under Armour",
+    "price": 1381.63,
+    "P/E": 18.38,
+    "growth": 127.18,
+    "potential profit": 0.38
+  }
+]

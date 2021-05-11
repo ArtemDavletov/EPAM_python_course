@@ -1,0 +1,82 @@
+[
+  {
+    "code": "TSLA",
+    "name": "Tesla",
+    "price": 54152.87,
+    "P/E": 739.78,
+    "growth": 401.64,
+    "potential profit": 33.55
+  },
+  {
+    "code": "EQIX",
+    "name": "Equinix",
+    "price": 54706.44,
+    "P/E": 708.14,
+    "growth": 10.44,
+    "potential profit": 12.75
+  },
+  {
+    "code": "BLK",
+    "name": "BlackRock",
+    "price": 61760.24,
+    "P/E": 810.17,
+    "growth": 76.14,
+    "potential profit": 8.79
+  },
+  {
+    "code": "ISRG",
+    "name": "Intuitive Surgical",
+    "price": 61874.61,
+    "P/E": 812.57,
+    "growth": 53.78,
+    "potential profit": 13.16
+  },
+  {
+    "code": "MTD",
+    "name": "Mettler-Toledo International",
+    "price": 97860.38,
+    "P/E": 1283.36,
+    "growth": 71.27,
+    "potential profit": 15.41
+  },
+  {
+    "code": "AZO",
+    "name": "AutoZone",
+    "price": 115089.62,
+    "P/E": 1498.47,
+    "growth": 54.16,
+    "potential profit": 19.57
+  },
+  {
+    "code": "CMG",
+    "name": "Chipotle Mexican Grill",
+    "price": 118005.39,
+    "P/E": 1534.45,
+    "growth": 111.29,
+    "potential profit": 35.11
+  },
+  {
+    "code": "GOOGL",
+    "name": "Alphabet A (ex Google",
+    "price": 174412.19,
+    "P/E": 2282.75,
+    "growth": 78.31,
+    "potential profit": 33.91
+  },
+  {
+    "code": "GOOG",
+    "name": "Alphabet C (ex Google",
+    "price": 175434.69,
+    "P/E": 2297.76,
+    "growth": 78.61,
+    "potential profit": 30.6
+  },
+  {
+    "code": "AMZN",
+    "name": "Amazon",
+    "price": 257353.67,
+    "P/E": 3399.44,
+    "growth": 44.43,
+    "potential profit": 73.14
+  }
+]
