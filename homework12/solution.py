@@ -1,9 +1,8 @@
 import datetime
 from collections import defaultdict
-from pathlib import Path
 from typing import Dict, List, Optional
 
-from sqlalchemy import Column, Date, DateTime, ForeignKey, Integer, String, create_engine
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, create_engine
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
 Base = declarative_base()
@@ -29,12 +28,6 @@ class Homework(Base):
 
 class DeadlineError(Exception):
     ...
-
-
-class Human:
-    id = Column(Integer, unique=True, primary_key=True, index=True)
-    last_name = Column(String)
-    first_name = Column(String)
 
 
 class Student(Base):
@@ -99,7 +92,7 @@ class Teacher(Base):
 if __name__ == "__main__":
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     db = SessionLocal()
-    # Base.metadata.create_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
 
     opp_teacher = Teacher(first_name="Daniil", last_name="Shadrin")
     db.add(opp_teacher)
