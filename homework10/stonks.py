@@ -19,13 +19,6 @@ def get_price_in_rubles(price: float):
 
 
 class Company:
-    code: str
-    name: str
-    price: float
-    pe: float
-    growth: float
-    potential_profit: float
-
     def __init__(self, code, name, price, pe, growth, potential_profit):
         self.code = code
         self.name = name
@@ -77,10 +70,6 @@ async def get_pages_gen() -> AsyncIterator:
         yield get_n_sandp_page(i)
 
 
-# def request_to_page(page: str) -> str:
-#     return requests.get(page).text
-
-
 async def fetch(client: ClientSession, page: str):
     async with client.get(page, verify_ssl=False) as resp:
         return await resp.text()
@@ -88,10 +77,6 @@ async def fetch(client: ClientSession, page: str):
 
 def get_all_stocks_from_page(soup):
     return soup.find("table", {"class": "table table-small"}).find_all("tr")
-
-
-# <span data-v-0ae43770="">, MMM</span>
-# soup.find("table",{"class":"table table-small"}).find_all("tr")[1].find_all("td")
 
 
 async def parse_company_page(href):
