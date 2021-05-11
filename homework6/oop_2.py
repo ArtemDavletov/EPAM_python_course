@@ -76,7 +76,6 @@ class Human:
 
 
 class Student(Human):
-
     def do_homework(self, homework: Homework, solution: str):
         if homework.is_active():
             return HomeworkResult(homework, solution, self)
@@ -85,11 +84,6 @@ class Student(Human):
 
 
 class HomeworkResult:
-    homework: Homework
-    solution: str
-    author: Student
-    created: datetime
-
     def __init__(self, homework: Homework, solution: str, author: Student):
         if not isinstance(homework, Homework):
             raise TypeError("You gave a not Homework object")
